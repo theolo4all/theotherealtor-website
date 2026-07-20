@@ -68,11 +68,11 @@ html {
 }
 
 .section-padding {
-  padding: 5rem 0;
+  padding: 3rem 0;
 }
 
 @media (max-width: 768px) {
   .section-padding {
-    padding: 3rem 0;
+    padding: 2rem 0;
   }
 }

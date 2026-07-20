@@ -5,7 +5,7 @@ import { ArrowRight, MapPin, Home, TrendingUp } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center bg-[#0a1628] overflow-hidden">
+    <section className="relative py-20 md:py-28 flex items-center bg-[#0a1628] overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-72 h-72 bg-[#c9a84c] rounded-full blur-3xl" />
