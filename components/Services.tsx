@@ -1,35 +1,33 @@
-import { Home, DollarSign, Key, BarChart3, Shield, Users } from "lucide-react";
-
 const services = [
   {
-    icon: Home,
     title: "Buyers",
     description: "From first-time buyers to seasoned investors, I use data-driven insights and tech tools to find your perfect property in Durham Region or anywhere in Ontario.",
+    icon: "🏠",
   },
   {
-    icon: DollarSign,
     title: "Sellers",
     description: "Strategic pricing, professional marketing, and targeted exposure. I leverage digital marketing and analytics to get you the best price, fast.",
+    icon: "📈",
   },
   {
-    icon: Key,
     title: "Leasing",
     description: "Residential and commercial leasing services. I connect landlords with qualified tenants and help renters find their ideal space.",
+    icon: "🔑",
   },
   {
-    icon: BarChart3,
     title: "Market Analytics",
     description: "Access to real-time market data, neighborhood trends, and investment analysis. Make informed decisions with confidence.",
+    icon: "📊",
   },
   {
-    icon: Shield,
     title: "Investment Properties",
     description: "Multi-unit, pre-construction, and rental property expertise. I analyze cash flow, cap rates, and growth potential.",
+    icon: "🛡️",
   },
   {
-    icon: Users,
     title: "Relocation Services",
     description: "Moving to Ontario? I help newcomers and relocating professionals navigate the market, from Oshawa to Toronto and beyond.",
+    icon: "👥",
   },
 ];
 
@@ -55,7 +53,7 @@ export default function Services() {
               className="group p-5 rounded-2xl bg-gray-50 hover:bg-[#0a1628] transition-all duration-300 cursor-pointer"
             >
               <div className="w-12 h-12 bg-[#c9a84c]/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#c9a84c] transition-colors">
-                <service.icon className="text-[#c9a84c] group-hover:text-[#0a1628] transition-colors" size={22} />
+                <span className="text-2xl">{service.icon}</span>
               </div>
               <h3 className="text-lg font-bold text-[#0a1628] group-hover:text-white mb-2 transition-colors">
                 {service.title}

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight, Phone, Mail, MapPin } from "lucide-react";
 
 export default function ContactCTA() {
   return (
@@ -11,10 +10,10 @@ export default function ContactCTA() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <span className="text-[#c9a84c] font-semibold text-sm tracking-wide uppercase">Get Started</span>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mt-2 mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold mt-2 mb-6" style={{ color: '#ffffff' }}>
             Ready to Make Your Move?
           </h2>
-          <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-lg mb-8 max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.8)' }}>
             Whether you&apos;re buying, selling, or leasing, I&apos;m here to guide you through every step. 
             Let&apos;s talk about your real estate goals.
           </p>
@@ -22,34 +21,33 @@ export default function ContactCTA() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Link href="/contact" className="btn-primary text-center">
               Schedule a Consultation
-              <ArrowRight className="inline ml-2" size={18} />
+              <span className="inline-block ml-2">→</span>
             </Link>
             <a href="tel:+16478385184" className="btn-secondary text-center">
-              <Phone className="inline mr-2" size={18} />
-              Call Now
+              📞 Call Now
             </a>
           </div>
 
           <div className="grid sm:grid-cols-3 gap-6 pt-8 border-t border-white/10">
             <div className="flex items-center justify-center gap-3">
-              <Phone className="text-[#c9a84c]" size={20} />
+              <span className="text-[#c9a84c] text-xl">📞</span>
               <div className="text-left">
-                <p className="text-white/60 text-xs">Cell</p>
-                <p className="text-white font-medium">647-838-5184</p>
+                <p className="text-xs" style={{ color: 'rgba(255,255,255,0.6)' }}>Cell</p>
+                <p className="font-medium" style={{ color: '#ffffff' }}>647-838-5184</p>
               </div>
             </div>
             <div className="flex items-center justify-center gap-3">
-              <Mail className="text-[#c9a84c]" size={20} />
+              <span className="text-[#c9a84c] text-xl">✉️</span>
               <div className="text-left">
-                <p className="text-white/60 text-xs">Email</p>
-                <p className="text-white font-medium text-sm">theo.tajou@century21.ca</p>
+                <p className="text-xs" style={{ color: 'rgba(255,255,255,0.6)' }}>Email</p>
+                <p className="font-medium text-sm" style={{ color: '#ffffff' }}>theo.tajou@century21.ca</p>
               </div>
             </div>
             <div className="flex items-center justify-center gap-3">
-              <MapPin className="text-[#c9a84c]" size={20} />
+              <span className="text-[#c9a84c] text-xl">📍</span>
               <div className="text-left">
-                <p className="text-white/60 text-xs">Office</p>
-                <p className="text-white font-medium text-sm">Toronto, ON</p>
+                <p className="text-xs" style={{ color: 'rgba(255,255,255,0.6)' }}>Office</p>
+                <p className="font-medium text-sm" style={{ color: '#ffffff' }}>Toronto, ON</p>
               </div>
             </div>
           </div>

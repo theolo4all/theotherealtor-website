@@ -8,15 +8,15 @@ export default function AboutPreview() {
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           <div>
             <span className="text-[#c9a84c] font-semibold text-sm tracking-wide uppercase">About Me</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mt-2 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold mt-2 mb-4" style={{ color: '#ffffff' }}>
               Tech Meets Real Estate
             </h2>
-            <p className="text-white/70 mb-4 leading-relaxed text-sm">
+            <p className="mb-4 leading-relaxed text-sm" style={{ color: 'rgba(255,255,255,0.8)' }}>
               I&apos;m not your typical agent. With a background in technology and cloud platforms, I bring a 
               data-driven approach to real estate. I analyze market trends, automate processes, and use 
               digital tools to give my clients an edge in today&apos;s competitive market.
             </p>
-            <p className="text-white/70 mb-6 leading-relaxed text-sm">
+            <p className="mb-6 leading-relaxed text-sm" style={{ color: 'rgba(255,255,255,0.8)' }}>
               Based in Oshawa and serving all of Ontario, I specialize in Durham Region real estate 
               while leveraging technology to serve clients across the province. From first-time buyers 
               to seasoned investors, I provide the insights and service you need.
@@ -25,18 +25,18 @@ export default function AboutPreview() {
             <div className="grid grid-cols-3 gap-4 mb-6">
               <div className="text-center">
                 <Code className="mx-auto text-[#c9a84c] mb-1" size={22} />
-                <p className="text-white font-bold text-sm">Tech-Driven</p>
-                <p className="text-white/60 text-xs">Data & Analytics</p>
+                <p className="font-bold text-sm" style={{ color: '#ffffff' }}>Tech-Driven</p>
+                <p className="text-xs" style={{ color: 'rgba(255,255,255,0.6)' }}>Data & Analytics</p>
               </div>
               <div className="text-center">
                 <Award className="mx-auto text-[#c9a84c] mb-1" size={22} />
-                <p className="text-white font-bold text-sm">Century 21</p>
-                <p className="text-white/60 text-xs">Titans Realty</p>
+                <p className="font-bold text-sm" style={{ color: '#ffffff' }}>Century 21</p>
+                <p className="text-xs" style={{ color: 'rgba(255,255,255,0.6)' }}>Titans Realty</p>
               </div>
               <div className="text-center">
                 <MapPin className="mx-auto text-[#c9a84c] mb-1" size={22} />
-                <p className="text-white font-bold text-sm">Oshawa</p>
-                <p className="text-white/60 text-xs">All Ontario</p>
+                <p className="font-bold text-sm" style={{ color: '#ffffff' }}>Oshawa</p>
+                <p className="text-xs" style={{ color: 'rgba(255,255,255,0.6)' }}>All Ontario</p>
               </div>
             </div>
 
@@ -56,9 +56,9 @@ export default function AboutPreview() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <p className="text-white font-bold text-lg">Theo Tajou</p>
+                <p className="font-bold text-lg" style={{ color: '#ffffff' }}>Theo Tajou</p>
                 <p className="text-[#c9a84c] text-sm mt-1">The Other Realtor</p>
-                <p className="text-white/60 text-sm mt-2">Century 21 Titans Realty Inc.</p>
+                <p className="text-sm mt-2" style={{ color: 'rgba(255,255,255,0.6)' }}>Century 21 Titans Realty Inc.</p>
               </div>
             </div>
             <div className="absolute -bottom-4 -right-4 w-36 h-36 bg-[#c9a84c]/10 rounded-full blur-2xl" />
