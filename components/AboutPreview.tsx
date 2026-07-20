@@ -49,8 +49,12 @@ export default function AboutPreview() {
           <div className="relative">
             <div className="aspect-square bg-gradient-to-br from-[#c9a84c]/20 to-[#1a2a4a] rounded-3xl flex items-center justify-center">
               <div className="text-center p-8">
-                <div className="w-32 h-32 bg-[#c9a84c] rounded-full mx-auto mb-6 flex items-center justify-center">
-                  <span className="text-[#0a1628] font-bold text-4xl">TT</span>
+                <div className="w-32 h-32 rounded-full mx-auto mb-6 overflow-hidden border-4 border-[#c9a84c]">
+                  <img 
+                    src="/Headshot New_InPixio.jpg" 
+                    alt="Theo Tajou - Real Estate Agent" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <p className="text-white font-bold text-xl">Theo Tajou</p>
                 <p className="text-[#c9a84c] text-sm mt-1">The Other Realtor</p>
