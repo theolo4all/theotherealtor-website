@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Code, Award, MapPin } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 export default function AboutPreview() {
   return (
@@ -52,12 +53,12 @@ export default function AboutPreview() {
                 <div className="w-28 h-28 rounded-full mx-auto mb-4 overflow-hidden border-4 border-[#c9a84c]">
                   <img 
                     src="/Headshot New_InPixio.jpg" 
-                    alt="Theo Tajou - Real Estate Agent" 
+                    alt="{siteConfig.owner.fullName}- Real Estate Agent" 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <p className="font-bold text-lg" style={{ color: '#ffffff' }}>Theo Tajou</p>
-                <p className="text-[#c9a84c] text-sm mt-1">The Other Realtor</p>
+                <p className="font-bold text-lg" style={{ color: '#ffffff' }}>{siteConfig.owner.fullName}</p>
+                <p className="text-[#c9a84c] text-sm mt-1">{siteConfig.owner.brandName}</p>
                 <p className="text-sm mt-2" style={{ color: 'rgba(255,255,255,0.6)' }}>Century 21 Titans Realty Inc.</p>
               </div>
             </div>
