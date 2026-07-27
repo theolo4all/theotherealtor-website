@@ -1,67 +1,333 @@
-"use client";
+// =========================
+// HERO.TSX - PART 1 OF 3
+// =========================
 
+import Image from "next/image";
 import Link from "next/link";
+
+import Container from "@/components/ui/Container";
+import SearchBar from "@/components/search/SearchBar";
+
+import {
+  ArrowRight,
+  Building2,
+  CheckCircle2,
+  Home,
+  KeyRound,
+  MapPin,
+  TrendingUp,
+} from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative py-16 md:py-24 flex items-center bg-[#0a1628] overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[#c9a84c] rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c9a84c] rounded-full blur-3xl" />
+    <section className="relative overflow-hidden bg-[#0a1628] text-white">
+
+      {/* Background Glow */}
+
+      <div className="absolute inset-0">
+
+        <div className="absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-[#c9a84c]/10 blur-3xl" />
+
+        <div className="absolute right-0 bottom-0 h-[450px] w-[450px] rounded-full bg-blue-500/10 blur-3xl" />
+
       </div>
 
-      <div className="container mx-auto px-6 relative z-10 pt-20">
-        <div className="max-w-3xl">
-          <div className="flex items-center gap-2 text-[#c9a84c] mb-6">
-            <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span className="text-sm font-medium tracking-wide uppercase">Serving Durham Region & All of Ontario</span>
+      <Container className="relative z-10 py-20 lg:py-28">
+
+        <div className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
+
+          {/* =======================================
+              LEFT COLUMN
+          ======================================= */}
+
+          <div className="max-w-xl">
+
+            {/* Badge */}
+
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#c9a84c]/20 bg-[#c9a84c]/10 px-4 py-2 text-sm font-semibold tracking-wide text-[#d8bb66]">
+
+              <MapPin className="h-4 w-4" />
+
+              Durham Region • GTA • Ontario
+
+            </div>
+
+            {/* Heading */}
+
+            <h1 className="mt-8 text-5xl font-extrabold leading-[1.05] tracking-tight lg:text-6xl">
+
+              Helping You
+
+              <span className="mt-2 block text-[#c9a84c]">
+
+                Buy • Sell • Invest
+
+              </span>
+
+              <span className="mt-2 block">
+
+                With Confidence
+
+              </span>
+
+            </h1>
+
+            {/* Description */}
+
+            <p className="mt-8 max-w-lg text-lg leading-8 text-slate-300">
+
+              Technology-driven real estate guidance for buyers,
+              sellers and investors across Ontario.
+
+              Combining local market expertise with modern
+              technology to help you make smarter real estate
+              decisions.
+
+            </p>
+
+            {/* Trust Points */}
+
+            <div className="mt-8 flex flex-wrap gap-6">
+
+  <div className="flex items-center gap-2">
+    <CheckCircle2 className="h-4 w-4 shrink-0 text-[#c9a84c]" />
+    <span className="text-sm font-medium text-slate-200">
+      Honest Advice
+    </span>
+  </div>
+
+  <div className="flex items-center gap-2">
+    <CheckCircle2 className="h-4 w-4 shrink-0 text-[#c9a84c]" />
+    <span className="text-sm font-medium text-slate-200">
+      Local Expertise
+    </span>
+  </div>
+
+  <div className="flex items-center gap-2">
+    <CheckCircle2 className="h-4 w-4 shrink-0 text-[#c9a84c]" />
+    <span className="text-sm font-medium text-slate-200">
+      Data-Driven
+
+                </span>
+
+              </div>
+
+            </div>
+
+            {/* Search Card */}
+
+            <div className="mt-10 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#c9a84c]">
+
+                SEARCH LISTINGS
+
+              </p>
+
+              <h2 className="mt-3 text-2xl font-bold">
+
+                Search Ontario Listings
+
+              </h2>
+
+              <p className="mt-2 text-sm text-slate-400">
+
+                Find homes by city, postal code or MLS® number.
+
+              </p>
+
+              <div className="mt-6">
+
+  <SearchBar />
+
+  {/* Popular Searches */}
+
+  <div className="mt-5 flex flex-wrap items-center gap-2">
+
+  <span className="mr-2 text-sm font-medium text-slate-400">
+    Explore Markets
+  </span>
+
+  {[
+    "Durham Region",
+    "York Region",
+    "Toronto",
+    "Niagara",
+    "Hamilton",
+    "London",
+    "Ottawa",
+    "Barrie",
+  ].map((city) => (
+    <button
+      key={city}
+      className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-slate-300 transition-all duration-300 hover:border-[#c9a84c] hover:bg-[#c9a84c]/10 hover:text-white"
+    >
+      {city}
+    </button>
+  ))}
+
+</div>
+
+</div>
+            </div>
+
+            {/* CTA Buttons */}
+
+            <div className="mt-10 flex flex-wrap gap-4">
+
+             <Link
+  href="/search"
+  className="inline-flex items-center justify-center rounded-xl bg-[#c9a84c] px-7 py-3.5 font-semibold text-[#0a1628] transition-all duration-300 hover:-translate-y-1 hover:bg-[#d8b95c] hover:shadow-xl"
+>
+  Browse Listings
+
+  <ArrowRight className="ml-2 h-5 w-5" />
+</Link>
+
+              <Link
+  href="/get-mortgage-ready"
+  className="inline-flex items-center justify-center rounded-xl border border-[#c9a84c] px-7 py-3.5 font-semibold text-[#c9a84c] transition-all duration-300 hover:bg-[#c9a84c] hover:text-[#0a1628]"
+>
+  Get Mortgage Ready
+
+  <ArrowRight className="ml-2 h-5 w-5" />
+</Link>
+
+            </div>
+
+<p className="mt-6 text-sm text-white/70">
+  Not sure where to start? Get connected with trusted mortgage professionals before you begin your home search.
+</p>
+
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6" style={{ color: '#ffffff' }}>
-            Your Tech-Savvy <span style={{ color: '#c9a84c' }}>Real Estate</span> Partner
-          </h1>
+          {/* =======================================
+              RIGHT COLUMN
+              (CONTINUES IN PART 2)
+          ======================================= */}
 
-          <p className="text-lg md:text-xl mb-8 max-w-2xl" style={{ color: 'rgba(255,255,255,0.85)' }}>
-            Hi, I&apos;m Theo Tajou. I combine cutting-edge technology with deep local market knowledge 
-            to help you buy, sell, or lease property across Ontario. Based in Oshawa, serving everywhere 
-            from Durham to Toronto and beyond.
-          </p>
+                    <div className="relative flex justify-center lg:justify-end">
 
-          <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <Link href="/contact" className="btn-primary text-center">
-              Get a Free Consultation
-              <span className="inline-block ml-2">→</span>
-            </Link>
-            <Link href="/services" className="btn-secondary text-center">
-              Explore Services
-            </Link>
+            {/* Decorative Glow */}
+
+            <div className="absolute inset-0 flex items-center justify-center">
+
+              <div className="h-[520px] w-[520px] rounded-full bg-[#c9a84c]/10 blur-3xl" />
+
+            </div>
+
+            {/* Portrait */}
+
+            <div className="relative z-10">
+
+              <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-3 shadow-2xl backdrop-blur">
+
+                <Image
+                  src="/theo-tajou.jpg"
+                  alt="Theo"
+                  width={420}
+                  height={530}
+                  priority
+                  className="rounded-[1.5rem] object-cover transition duration-500 hover:scale-[1.02]"
+                />
+
+              </div>
+
+              {/* Floating Card - Technology */}
+
+              <div className="absolute -right-12 bottom-14 hidden w-64 rounded-2xl border border-white/10 bg-[#13233b]/90 p-5 shadow-2xl backdrop-blur lg:block">
+
+                <div className="flex items-start gap-4">
+
+                  <div className="rounded-xl bg-[#c9a84c]/20 p-3">
+
+                    <TrendingUp className="h-6 w-6 text-[#d8bb66]" />
+
+                  </div>
+
+                  <div>
+
+                    <p className="font-semibold">
+
+                      Technology-Driven 
+
+                    </p>
+
+                    <p className="mt-1 text-sm leading-6 text-slate-300">
+
+                      Modern technology and local expertise
+                      to help you buy and sell with confidence.
+                      
+
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              {/* Bottom Trust Strip */}
+
+{/* Expertise Cards */}
+
+<div className="mt-8 grid grid-cols-3 gap-4">
+
+  <div className="rounded-2xl border border-white/10 bg-white/5 p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#c9a84c] hover:bg-white/10">
+
+    <Home className="mx-auto mb-3 h-8 w-8 text-[#c9a84c]" />
+
+    <h3 className="font-semibold text-white">
+      Buyers
+    </h3>
+
+    <p className="mt-2 text-xs leading-5 text-slate-300">
+      First-time buyers, growing families and newcomers.
+    </p>
+
+  </div>
+
+  <div className="rounded-2xl border border-white/10 bg-white/5 p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#c9a84c] hover:bg-white/10">
+
+    <KeyRound className="mx-auto mb-3 h-8 w-8 text-[#c9a84c]" />
+
+    <h3 className="font-semibold text-white">
+      Sellers
+    </h3>
+
+    <p className="mt-2 text-xs leading-5 text-slate-300">
+      Strategic pricing, marketing and skilled negotiation.
+    </p>
+
+  </div>
+
+  <div className="rounded-2xl border border-white/10 bg-white/5 p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#c9a84c] hover:bg-white/10">
+
+    <Building2 className="mx-auto mb-3 h-8 w-8 text-[#c9a84c]" />
+
+    <h3 className="font-semibold text-white">
+      Investors
+    </h3>
+
+    <p className="mt-2 text-xs leading-5 text-slate-300">
+      Build wealth through data-driven real estate decisions.
+    </p>
+
+  </div>
+
+</div>
+
+            </div>
+
           </div>
 
-          <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <svg width="20" height="20" fill="none" stroke="#c9a84c" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                <span className="text-2xl font-bold" style={{ color: '#ffffff' }}>Buyers</span>
-              </div>
-              <p style={{ color: 'rgba(255,255,255,0.7)' }} className="text-sm">First-time & seasoned</p>
-            </div>
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <svg width="20" height="20" fill="none" stroke="#c9a84c" strokeWidth="2" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                <span className="text-2xl font-bold" style={{ color: '#ffffff' }}>Sellers</span>
-              </div>
-              <p style={{ color: 'rgba(255,255,255,0.7)' }} className="text-sm">Maximize your return</p>
-            </div>
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <svg width="20" height="20" fill="none" stroke="#c9a84c" strokeWidth="2" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span className="text-2xl font-bold" style={{ color: '#ffffff' }}>Leasing</span>
-              </div>
-              <p style={{ color: 'rgba(255,255,255,0.7)' }} className="text-sm">Residential & commercial</p>
-            </div>
-          </div>
         </div>
-      </div>
+                {/* Bottom Divider */}
+
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-slate-950/30" />
+
+      </Container>
+
     </section>
   );
 }

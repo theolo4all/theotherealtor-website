@@ -26,4 +26,21 @@ export const siteConfig = {
     province: "Ontario",
     country: "Canada",
   },
+
+  hero: {
+  badge: "Durham Region • GTA • Ontario",
+
+  title: {
+    line1: "Helping You",
+    highlight: "Buy, Sell & Invest",
+    line2: "With Confidence",
+  },
+
+  description:
+    "Technology-driven real estate guidance for buyers, sellers and investors throughout Durham Region, the GTA and communities across Ontario.",
+
+  primaryCTA: "Book Consultation",
+
+  secondaryCTA: "Explore Communities",
+},
 } as const;
