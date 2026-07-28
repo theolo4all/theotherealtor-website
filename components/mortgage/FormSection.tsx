@@ -1,3 +1,9 @@
+"use client";
+
+import { useTransition } from "react";
+import { useRouter } from "next/navigation";
+import { submitMortgageLead } from "@/app/actions/mortgage";
+
 import {
   CheckCircle2,
   ArrowRight,
@@ -11,6 +17,8 @@ const reasons = [
 ];
 
 export default function FormSection() {
+    const router = useRouter();
+    const [isPending, startTransition] = useTransition();
   return (
     <section
       id="mortgage-form"
@@ -78,17 +86,32 @@ export default function FormSection() {
               Complete this form in less than a minute.
             </p>
 
-            <form className="mt-8 space-y-5">
+            <form
+  className="mt-8 space-y-5"
+  action={(formData) =>
+    startTransition(async () => {
+      const result = await submitMortgageLead(formData);
+
+      if (result.success) {
+        router.push("/thank-you");
+      } else {
+        alert(result.error ?? "Something went wrong.");
+      }
+    })
+  }
+>
 
               <div className="grid gap-5 md:grid-cols-2">
 
                 <input
+                  name="firstName"
                   type="text"
                   placeholder="First Name"
                   className="rounded-xl border border-gray-300 p-4 focus:border-[#c9a84c] focus:outline-none"
                 />
 
                 <input
+                  name="lastName"
                   type="text"
                   placeholder="Last Name"
                   className="rounded-xl border border-gray-300 p-4 focus:border-[#c9a84c] focus:outline-none"
@@ -97,12 +120,14 @@ export default function FormSection() {
               </div>
 
               <input
+                name="email"
                 type="email"
                 placeholder="Email Address"
                 className="w-full rounded-xl border border-gray-300 p-4 focus:border-[#c9a84c] focus:outline-none"
               />
 
               <input
+                name="phone"
                 type="tel"
                 placeholder="Phone Number"
                 className="w-full rounded-xl border border-gray-300 p-4 focus:border-[#c9a84c] focus:outline-none"
@@ -111,12 +136,14 @@ export default function FormSection() {
               <div className="grid gap-5 md:grid-cols-2">
 
                 <input
+                  name="city"
                   type="text"
                   placeholder="City"
                   className="rounded-xl border border-gray-300 p-4 focus:border-[#c9a84c] focus:outline-none"
                 />
 
                 <input
+                  name="province"
                   type="text"
                   placeholder="Province"
                   defaultValue="Ontario"
@@ -137,23 +164,26 @@ export default function FormSection() {
               </select>
 
               <textarea
-                rows={5}
-                placeholder="Tell me a little about your goals (optional)"
-                className="w-full rounded-xl border border-gray-300 p-4 focus:border-[#c9a84c] focus:outline-none"
-              />
+  name="message"
+  rows={5}
+  placeholder="Tell me a little about your goals (optional)"
+  className="w-full rounded-xl border border-gray-300 p-4 focus:border-[#c9a84c] focus:outline-none"
+/>
 
               <button
-                type="submit"
-                className="inline-flex w-full items-center justify-center rounded-full bg-[#c9a84c] px-8 py-4 text-lg font-semibold text-[#0a1628] transition-all duration-300 hover:-translate-y-1 hover:bg-[#d8b95c] hover:shadow-xl"
-              >
-                Start My Home-Buying Journey
+  type="submit"
+  disabled={isPending}
+  className="inline-flex w-full items-center justify-center rounded-full bg-[#c9a84c] px-8 py-4 text-lg font-semibold text-[#0a1628] transition-all duration-300 hover:-translate-y-1 hover:bg-[#d8b95c] hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-70"
+>
+  {isPending ? "Sending..." : "Start My Home-Buying Journey"}
 
-                <ArrowRight
-                  className="ml-2"
-                  size={20}
-                />
-
-              </button>
+  {!isPending && (
+    <ArrowRight
+      className="ml-2"
+      size={20}
+    />
+  )}
+</button>
 
             </form>
 
