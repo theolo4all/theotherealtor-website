@@ -1,8 +1,18 @@
 import Link from "next/link";
 import PropertyCard from "@/components/property/PropertyCard";
-import { featuredListings } from "@/lib/listings";
+import { createClient } from "@/lib/supabase/server";
 
-export default function FeaturedListings() {
+export default async function FeaturedListings() {
+  const supabase = await createClient();
+
+  const { data: listings } = await supabase
+    .from("listings")
+    .select("*")
+    .eq("featured", true)
+    .eq("status", "For Sale")
+    .order("created_at", { ascending: false })
+    .limit(6);
+
   return (
     <section className="section-padding bg-[#0f1727]">
       <div className="container mx-auto px-6">
@@ -30,7 +40,7 @@ export default function FeaturedListings() {
         {/* Cards */}
 
         <div className="grid gap-8 lg:grid-cols-3">
-          {featuredListings.map((listing) => (
+          {listings?.map((listing) => (
             <PropertyCard
               key={listing.id}
               listing={listing}

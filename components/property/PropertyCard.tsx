@@ -3,7 +3,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BedDouble, Bath, Square, MapPin } from "lucide-react";
-import { Listing } from "@/types/listing";
+interface Listing {
+  id: string;
+  address: string;
+  city: string;
+  province: string;
+  price: number;
+  bedrooms: number | null;
+  bathrooms: number | null;
+  sqft: number | null;
+  property_type: string | null;
+  image_url: string | null;
+  status: string;
+  slug: string;
+}
 
 interface PropertyCardProps {
   listing: Listing;
@@ -14,14 +27,17 @@ export default function PropertyCard({
 }: PropertyCardProps) {
   return (
     <Link
-      href={`/properties/${listing.id}`}
+      href={`/properties/${listing.slug}`}
       className="group block overflow-hidden rounded-3xl border border-white/10 bg-[#1b2434] transition-all duration-500 hover:-translate-y-2 hover:border-[#c9a84c]/60 hover:shadow-2xl hover:shadow-[#c9a84c]/20"
     >
       {/* IMAGE */}
 
       <div className="relative h-64 overflow-hidden">
         <Image
-          src={listing.image}
+          src={
+  listing.image_url ||
+  "https://images.unsplash.com/photo-1600585154526-990dced4db0d"
+}
           alt={listing.address}
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -45,7 +61,7 @@ export default function PropertyCard({
       <div className="space-y-5 p-6">
         <div>
   <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#c9a84c]">
-    {listing.propertyType}
+    {listing.property_type}
   </p>
 
   <h3 className="mt-2 line-clamp-1 text-xl font-bold text-white">

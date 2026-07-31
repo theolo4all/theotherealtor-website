@@ -5,7 +5,6 @@ export default function ThankYouPage() {
   return (
     <main className="min-h-screen bg-[#0a1628] flex items-center justify-center px-6">
       <div className="max-w-xl rounded-3xl bg-white p-10 text-center shadow-2xl">
-
         <CheckCircle2
           className="mx-auto text-green-600"
           size={72}
@@ -33,7 +32,6 @@ export default function ThankYouPage() {
             <ArrowRight className="ml-2" size={18} />
           </Link>
         </div>
-
       </div>
     </main>
   );
