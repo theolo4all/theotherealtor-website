@@ -32,15 +32,15 @@ export default function Hero() {
 
       </div>
 
-      <Container className="relative z-10 py-20 lg:py-28">
+      <Container className="relative z-10 py-12 sm:py-16 lg:py-28">
 
-        <div className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
 
           {/* =======================================
               LEFT COLUMN
           ======================================= */}
 
-          <div className="max-w-xl">
+          <div className="order-2 max-w-xl lg:order-1">
 
             {/* Badge */}
 
@@ -54,7 +54,7 @@ export default function Hero() {
 
             {/* Heading */}
 
-            <h1 className="mt-8 text-5xl font-extrabold leading-[1.05] tracking-tight lg:text-6xl">
+            <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:mt-8 lg:text-6xl">
 
               Helping You
 
@@ -206,7 +206,7 @@ export default function Hero() {
               (CONTINUES IN PART 2)
           ======================================= */}
 
-                    <div className="relative flex justify-center lg:justify-end">
+                    <div className="order-1 relative flex justify-center lg:order-2 lg:justify-end">
 
             {/* Decorative Glow */}
 
@@ -223,13 +223,13 @@ export default function Hero() {
               <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-3 shadow-2xl backdrop-blur">
 
                 <Image
-                  src="/theo-tajou.jpg"
-                  alt="Theo"
-                  width={420}
-                  height={530}
-                  priority
-                  className="rounded-[1.5rem] object-cover transition duration-500 hover:scale-[1.02]"
-                />
+  src="/theo-tajou.jpg"
+  alt="Theo Tajou"
+  width={360}
+  height={460}
+  priority
+  className="w-[260px] rounded-[1.5rem] object-cover transition duration-500 hover:scale-[1.02] sm:w-[320px] lg:w-[420px]"
+/>
 
               </div>
 
@@ -271,7 +271,7 @@ export default function Hero() {
 
 {/* Expertise Cards */}
 
-<div className="mt-8 grid grid-cols-3 gap-4">
+<div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
 
   <div className="rounded-2xl border border-white/10 bg-white/5 p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#c9a84c] hover:bg-white/10">
 

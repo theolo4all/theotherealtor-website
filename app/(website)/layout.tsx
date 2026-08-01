@@ -10,7 +10,9 @@ export default function WebsiteLayout({
     <>
       <Navbar />
 
-      <main>{children}</main>
+      <main>
+        {children}
+      </main>
 
       <Footer />
     </>
