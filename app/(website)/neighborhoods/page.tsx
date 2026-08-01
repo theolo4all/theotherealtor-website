@@ -62,7 +62,7 @@ export default function NeighborhoodsPage() {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <section className="bg-[#0a1628] py-20">
+      <section className="bg-[#0a1628] pt-28 pb-20">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl">
             <span className="text-[#c9a84c] font-semibold text-sm tracking-wide uppercase">Neighborhoods</span>
