@@ -1,3 +1,4 @@
+import { GoogleTagManager } from "@next/third-parties/google";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -113,9 +114,10 @@ export default function RootLayout({
 return (
   <html lang="en-CA">
     <body className={inter.className}>
-      <GoogleAnalytics />
       {children}
     </body>
+
+    <GoogleTagManager gtmId="GTM-PQDV4QMP" />
   </html>
 );
 }
