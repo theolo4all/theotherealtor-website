@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from "lucide-react";
+import { submitContactLead } from "@/app/actions/contact";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -11,14 +12,41 @@ export default function ContactPage() {
     service: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+const [submitted, setSubmitted] = useState(false);
+const [submitting, setSubmitting] = useState(false);
+const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // For now, just show success. Later we'll connect to a backend.
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  setSubmitting(true);
+  setError("");
+
+  try {
+    await submitContactLead(formData);
+
     setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
-  };
+
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      service: "",
+      message: "",
+    });
+
+    setTimeout(() => {
+      setSubmitted(false);
+    }, 5000);
+  } catch (err) {
+    console.error(err);
+    setError(
+      "Something went wrong while sending your message. Please try again."
+    );
+  } finally {
+    setSubmitting(false);
+  }
+};
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -176,7 +204,10 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-[#0a1628] mb-1">Message</label>
+                    <label className="block text-sm font-medium text-[#0a1628] mb-1">
+                      Message
+                    </label>
+
                     <textarea
                       name="message"
                       rows={4}
@@ -187,12 +218,20 @@ export default function ContactPage() {
                     />
                   </div>
 
+                  {error && (
+                    <p className="text-sm text-red-600 text-center">
+                      {error}
+                    </p>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full bg-[#c9a84c] text-[#0a1628] font-semibold py-4 rounded-lg hover:bg-[#e8d5a3] transition-colors flex items-center justify-center gap-2"
+                    disabled={submitting}
+                    className="w-full bg-[#c9a84c] text-[#0a1628] font-semibold py-4 rounded-lg hover:bg-[#e8d5a3] transition-colors flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     <Send size={18} />
-                    Send Message
+
+                    {submitting ? "Sending..." : "Send Message"}
                   </button>
 
                   <p className="text-xs text-gray-500 text-center">
