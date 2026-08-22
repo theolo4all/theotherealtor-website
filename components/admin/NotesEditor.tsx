@@ -7,7 +7,7 @@ export default function NotesEditor({
   id,
   notes,
 }: {
-  id: number;
+  id: string;
   notes: string | null;
 }) {
   const [value, setValue] = useState(notes ?? "");

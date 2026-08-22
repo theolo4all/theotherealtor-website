@@ -4,11 +4,11 @@ import { supabase } from "@/lib/supabase";
 import { revalidatePath } from "next/cache";
 
 export async function updateLeadNotes(
-  id: number,
+  id: string,
   notes: string
 ) {
   const { error } = await supabase
-    .from("mortgage_leads")
+    .from("leads")
     .update({
       notes,
       updated_at: new Date().toISOString(),

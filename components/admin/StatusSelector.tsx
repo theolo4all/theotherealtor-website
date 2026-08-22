@@ -7,7 +7,7 @@ export default function StatusSelector({
   id,
   currentStatus,
 }: {
-  id: number;
+  id: string;
   currentStatus: string;
 }) {
   const [isPending, startTransition] = useTransition();

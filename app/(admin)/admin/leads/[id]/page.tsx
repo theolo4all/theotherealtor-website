@@ -12,7 +12,7 @@ export default async function LeadDetailsPage({
   const { id } = await params;
 
   const { data: lead, error } = await supabase
-    .from("mortgage_leads")
+    .from("leads")
     .select("*")
     .eq("id", id)
     .single();
@@ -42,11 +42,11 @@ export default async function LeadDetailsPage({
 
           <div className="mb-8">
             <h2 className="text-3xl font-semibold">
-              {lead.first_name} {lead.last_name}
+              {lead.name}
             </h2>
 
             <p className="mt-1 text-gray-500">
-              Mortgage Lead
+              Real Estate Lead
             </p>
           </div>
 
@@ -63,16 +63,15 @@ export default async function LeadDetailsPage({
             />
 
             <Info
-              label="City"
-              value={lead.city}
+              label="Service"
+              value={lead.service}
             />
 
             <Info
-              label="Province"
-              value={lead.province}
+              label="Source"
+              value={lead.source}
             />
 
-            {/* Status Selector */}
             <div>
               <p className="mb-2 text-sm text-gray-500">
                 Status
@@ -85,24 +84,46 @@ export default async function LeadDetailsPage({
             </div>
 
             <Info
-              label="Source"
-              value={lead.source}
+              label="Created"
+              value={
+                lead.created_at
+                  ? new Date(
+                      lead.created_at
+                    ).toLocaleString()
+                  : null
+              }
             />
 
           </div>
 
+          {lead.message && (
+            <>
+              <hr className="my-8" />
+
+              <div>
+                <h3 className="mb-3 text-xl font-semibold">
+                  Original Message
+                </h3>
+
+                <div className="rounded-lg bg-gray-50 p-5 text-gray-700">
+                  {lead.message}
+                </div>
+              </div>
+            </>
+          )}
+
           <hr className="my-8" />
 
           <div>
-  <h3 className="mb-3 text-xl font-semibold">
-    Notes
-  </h3>
+            <h3 className="mb-3 text-xl font-semibold">
+              Notes
+            </h3>
 
-  <NotesEditor
-    id={lead.id}
-    notes={lead.notes}
-  />
-</div>
+            <NotesEditor
+              id={lead.id}
+              notes={lead.notes}
+            />
+          </div>
 
         </div>
 

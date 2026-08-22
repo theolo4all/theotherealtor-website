@@ -3,7 +3,7 @@ import { supabase } from "@/lib/supabase";
 
 export default async function LeadsPage() {
   const { data: leads, error } = await supabase
-    .from("mortgage_leads")
+    .from("leads")
     .select("*")
     .order("created_at", { ascending: false });
 
@@ -13,16 +13,20 @@ export default async function LeadsPage() {
         <h1 className="text-2xl font-bold text-red-600">
           Error loading leads
         </h1>
+
         <p>{error.message}</p>
       </main>
     );
   }
 
   const total = leads?.length ?? 0;
+
   const newLeads =
     leads?.filter((lead) => lead.status === "New").length ?? 0;
+
   const contacted =
     leads?.filter((lead) => lead.status === "Contacted").length ?? 0;
+
   const closed =
     leads?.filter((lead) => lead.status === "Closed").length ?? 0;
 
@@ -31,14 +35,15 @@ export default async function LeadsPage() {
       <div className="mx-auto max-w-7xl">
 
         {/* Header */}
+
         <div className="mb-8 flex items-center justify-between">
           <div>
-            <h1 className="text-4xl font-bold">
-              Mortgage Leads
+            <h1 className="text-4xl font-bold text-[#0a1628]">
+              Leads
             </h1>
 
             <p className="mt-2 text-gray-500">
-              Manage and track all mortgage leads.
+              Manage and track your real estate leads.
             </p>
           </div>
 
@@ -48,6 +53,7 @@ export default async function LeadsPage() {
         </div>
 
         {/* Dashboard Cards */}
+
         <div className="mb-8 grid gap-6 md:grid-cols-4">
           <StatCard title="Total Leads" value={total} />
           <StatCard title="New" value={newLeads} />
@@ -56,17 +62,32 @@ export default async function LeadsPage() {
         </div>
 
         {/* Leads Table */}
+
         <div className="overflow-hidden rounded-xl bg-white shadow-lg">
 
           <table className="min-w-full">
 
             <thead className="bg-gray-100">
               <tr>
-                <th className="p-4 text-left font-semibold">Name</th>
-                <th className="p-4 text-left font-semibold">Email</th>
-                <th className="p-4 text-left font-semibold">Phone</th>
-                <th className="p-4 text-left font-semibold">City</th>
-                <th className="p-4 text-left font-semibold">Status</th>
+                <th className="p-4 text-left font-semibold">
+                  Name
+                </th>
+
+                <th className="p-4 text-left font-semibold">
+                  Email
+                </th>
+
+                <th className="p-4 text-left font-semibold">
+                  Phone
+                </th>
+
+                <th className="p-4 text-left font-semibold">
+                  Service
+                </th>
+
+                <th className="p-4 text-left font-semibold">
+                  Status
+                </th>
               </tr>
             </thead>
 
@@ -75,15 +96,17 @@ export default async function LeadsPage() {
                 <tr
                   key={lead.id}
                   className={`border-t transition hover:bg-blue-50 ${
-                    index % 2 === 0 ? "bg-white" : "bg-gray-50"
+                    index % 2 === 0
+                      ? "bg-white"
+                      : "bg-gray-50"
                   }`}
                 >
                   <td className="p-4 font-medium">
                     <Link
                       href={`/admin/leads/${lead.id}`}
-                      className="block w-full h-full text-blue-700 hover:underline"
+                      className="block text-blue-700 hover:underline"
                     >
-                      {lead.first_name} {lead.last_name}
+                      {lead.name}
                     </Link>
                   </td>
 
@@ -92,15 +115,17 @@ export default async function LeadsPage() {
                   </td>
 
                   <td className="p-4">
-                    {lead.phone}
+                    {lead.phone || "-"}
+                  </td>
+
+                  <td className="p-4 capitalize">
+                    {lead.service || "-"}
                   </td>
 
                   <td className="p-4">
-                    {lead.city}
-                  </td>
-
-                  <td className="p-4">
-                    <StatusBadge status={lead.status ?? ""} />
+                    <StatusBadge
+                      status={lead.status ?? "New"}
+                    />
                   </td>
                 </tr>
               ))}
